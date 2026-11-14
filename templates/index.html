@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Car Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #222;
+        }
+
+        h1 { text-align: center; }
+
+        form {
+            display: grid;
+            gap: 14px;
+        }
+
+        label { font-weight: bold; }
+
+        input, select, button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 10px;
+            color: white;
+            background: #1769aa;
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 16px;
+            background: #eaf5ea;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Used Car Price Prediction</h1>
+
+    <form action="/" method="POST">
+       <label for="model">Car model</label>
+    <select id="model" name="model" required>
+    <option value="">Choose a car model</option>
+    <option value="3">3</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="A4">A4</option>
+    <option value="A6">A6</option>
+    <option value="A8">A8</option>
+    <option value="Alto">Alto</option>
+    <option value="Altroz">Altroz</option>
+    <option value="Alturas">Alturas</option>
+    <option value="Amaze">Amaze</option>
+    <option value="Aspire">Aspire</option>
+    <option value="Aura">Aura</option>
+    <option value="Baleno">Baleno</option>
+    <option value="Bolero">Bolero</option>
+    <option value="C">C</option>
+    <option value="C-Class">C-Class</option>
+    <option value="CLS">CLS</option>
+    <option value="CR">CR</option>
+    <option value="CR-V">CR-V</option>
+    <option value="Camry">Camry</option>
+    <option value="Carnival">Carnival</option>
+    <option value="Cayenne">Cayenne</option>
+    <option value="Celerio">Celerio</option>
+    <option value="Ciaz">Ciaz</option>
+    <option value="City">City</option>
+    <option value="Civic">Civic</option>
+    <option value="Compass">Compass</option>
+    <option value="Continental">Continental</option>
+    <option value="Cooper">Cooper</option>
+    <option value="Creta">Creta</option>
+    <option value="D-Max">D-Max</option>
+    <option value="Duster">Duster</option>
+    <option value="Dzire LXI">Dzire LXI</option>
+    <option value="Dzire VXI">Dzire VXI</option>
+    <option value="Dzire ZXI">Dzire ZXI</option>
+    <option value="E-Class">E-Class</option>
+    <option value="ES">ES</option>
+    <option value="Ecosport">Ecosport</option>
+    <option value="Eeco">Eeco</option>
+    <option value="Elantra">Elantra</option>
+    <option value="Endeavour">Endeavour</option>
+    <option value="Ertiga">Ertiga</option>
+    <option value="F-PACE">F-PACE</option>
+    <option value="Figo">Figo</option>
+    <option value="Fortuner">Fortuner</option>
+    <option value="Freestyle">Freestyle</option>
+    <option value="GL-Class">GL-Class</option>
+    <option value="GLS">GLS</option>
+    <option value="GO">GO</option>
+    <option value="GTC4Lusso">GTC4Lusso</option>
+    <option value="Ghibli">Ghibli</option>
+    <option value="Ghost">Ghost</option>
+    <option value="Glanza">Glanza</option>
+    <option value="Grand">Grand</option>
+    <option value="Gurkha">Gurkha</option>
+    <option value="Harrier">Harrier</option>
+    <option value="Hector">Hector</option>
+    <option value="Hexa">Hexa</option>
+    <option value="Ignis">Ignis</option>
+    <option value="Innova">Innova</option>
+    <option value="Jazz">Jazz</option>
+    <option value="KUV">KUV</option>
+    <option value="KUV100">KUV100</option>
+    <option value="KWID">KWID</option>
+    <option value="Kicks">Kicks</option>
+    <option value="MUX">MUX</option>
+    <option value="Macan">Macan</option>
+    <option value="Marazzo">Marazzo</option>
+    <option value="NX">NX</option>
+    <option value="Nexon">Nexon</option>
+    <option value="Octavia">Octavia</option>
+    <option value="Panamera">Panamera</option>
+    <option value="Polo">Polo</option>
+    <option value="Q7">Q7</option>
+    <option value="Quattroporte">Quattroporte</option>
+    <option value="RX">RX</option>
+    <option value="Rapid">Rapid</option>
+    <option value="RediGO">RediGO</option>
+    <option value="Rover">Rover</option>
+    <option value="S-Class">S-Class</option>
+    <option value="S-Presso">S-Presso</option>
+    <option value="S90">S90</option>
+    <option value="Safari">Safari</option>
+    <option value="Santro">Santro</option>
+    <option value="Scorpio">Scorpio</option>
+    <option value="Seltos">Seltos</option>
+    <option value="Superb">Superb</option>
+    <option value="Swift">Swift</option>
+    <option value="Swift Dzire">Swift Dzire</option>
+    <option value="Thar">Thar</option>
+    <option value="Tiago">Tiago</option>
+    <option value="Tigor">Tigor</option>
+    <option value="Triber">Triber</option>
+    <option value="Tucson">Tucson</option>
+    <option value="Vento">Vento</option>
+    <option value="Venue">Venue</option>
+    <option value="Verna">Verna</option>
+    <option value="Vitara">Vitara</option>
+    <option value="WR-V">WR-V</option>
+    <option value="Wagon R">Wagon R</option>
+    <option value="Wrangler">Wrangler</option>
+    <option value="X-Trail">X-Trail</option>
+    <option value="X1">X1</option>
+    <option value="X3">X3</option>
+    <option value="X4">X4</option>
+    <option value="X5">X5</option>
+    <option value="XC">XC</option>
+    <option value="XC60">XC60</option>
+    <option value="XC90">XC90</option>
+    <option value="XE">XE</option>
+    <option value="XF">XF</option>
+    <option value="XL6">XL6</option>
+    <option value="XUV300">XUV300</option>
+    <option value="XUV500">XUV500</option>
+    <option value="Yaris">Yaris</option>
+    <option value="Z4">Z4</option>
+    <option value="i10">i10</option>
+    <option value="i20">i20</option>
+    <option value="redi-GO">redi-GO</option>
+    </select>
+
+        <label for="vehicle_age">Vehicle age (years)</label>
+        <input type="number" id="vehicle_age" name="vehicle_age" min="0" required>
+
+        <label for="km_driven">Kilometers driven</label>
+        <input type="number" id="km_driven" name="km_driven" min="0" required>
+
+        <label for="seller_type">Seller type</label>
+        <select id="seller_type" name="seller_type" required>
+            <option value="Individual">Individual</option>
+            <option value="Dealer">Dealer</option>
+            <option value="Trustmark Dealer">Trustmark Dealer</option>
+        </select>
+
+        <label for="fuel_type">Fuel type</label>
+        <select id="fuel_type" name="fuel_type" required>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="CNG">CNG</option>
+            <option value="LPG">LPG</option>
+            <option value="Electric">Electric</option>
+        </select>
+
+        <label for="transmission_type">Transmission</label>
+        <select id="transmission_type" name="transmission_type" required>
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+        </select>
+
+        <label for="mileage">Mileage</label>
+        <input type="number" id="mileage" name="mileage" min="0" step="any" required>
+
+        <label for="engine">Engine (cc)</label>
+        <input type="number" id="engine" name="engine" min="0" step="any" required>
+
+        <label for="max_power">Maximum power</label>
+        <input type="number" id="max_power" name="max_power" min="0" step="any" required>
+
+       <label for="seats">Seats</label>
+       <select id="seats" name="seats" required>
+        <option value="">Choose seats</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+
+        <button type="submit">Predict price</button>
+    </form>
+
+    {% if prediction is not none %}
+        <div class="result">
+            <h2>Predicted selling price</h2>
+            <p>{{ prediction }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
