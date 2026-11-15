@@ -42,7 +42,9 @@ Tech Stack
 
 ## Project Structure
 
+## Project Structure
 
+```text
 Car_Dekho/
 ├── application.py
 ├── models/
@@ -52,8 +54,29 @@ Car_Dekho/
 │   └── index.html
 ├── static/
 │   └── style.css
+├── images/
+│   ├── prediction-result.png
+│   └── model-performance.png
 ├── requirements.txt
 └── README.md
+```
+
+## Application Preview
+
+Enter the car’s details in the web form and select **Predict price**. The app displays an estimated selling price based on the trained model.
+
+![Car price prediction form and result](images/prediction-result.png)
+
+## Model Performance
+
+I compared the Random Forest Regressor and K-Neighbors Regressor using the test set. The Random Forest performed better, with lower test MAE and RMSE and a higher R² score.
+
+- Random Forest: MAE 99,126; RMSE 218,993; R² 0.9363
+- K-Neighbors: MAE 113,728; RMSE 254,103; R² 0.9142
+
+MAE is the average absolute difference between the predicted and actual prices. The Random Forest’s test MAE means its predictions differed from actual prices by about ₹99,126 on average in this test set.
+
+![Model training and test performance](images/model-performance.png)
 
 # RUN LOCALLY
 1. Clone the repository
@@ -66,4 +89,3 @@ Car_Dekho/
    pip install -r requirements.txt
 4. Start the Flask application
    python3 application.py
-    
